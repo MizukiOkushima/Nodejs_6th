@@ -18,13 +18,129 @@ DBに使用<br>
 
 ### 環境構築
 package.jsonファイルの生成<br>
-`npm init -y`<br>
+
+```
+npm init -y
+```
+
 <br>
+
 express, nodemon, pgのインストール<br>
 nodemon 保存する度にサーバーをリロードしてくれるモジュール<br>
 pg PostgreSQLとNode.jsで作成したサーバーを連携するモジュール<br>
-`npm i express nodemon pg`<br>
-package.jsonのscriptsに以下の内容を追加<br>
-`"scripts": {
+
+```
+npm i express nodemon pg
+```
+
+<br>
+
+dotenvのインストール<br>
+を環境変数を使用し保守性を高める<br>
+
+```
+npm i dotenv
+```
+
+<br>
+
+package.jsonのscriptsに以下の内容を追加
+
+```
+"scripts": {
     "start": "nodemon server.js"
-}`<br>
+}
+```
+
+<br>
+
+.envの作成<br>
+
+```
+touch .env
+```
+.envに以下を記載<br>
+
+```
+# PostgreSQLのパスワード
+PG_PWD=[PostgreSQLのパスワード]
+```
+
+<br>
+
+## PostgreSQLの基礎操作
+
+SQL Shell(psql)からターミナルを起動
+<br>
+各問にreturnキーで進める<br>
+
+PostgreSQLにてDB作成
+
+```
+postgres=# CREATE DATABASE users;
+```
+
+<br>
+
+作成したDBに接続
+
+```
+postgres=# \c users
+```
+
+<br>
+
+usersテーブルの作成
+
+```
+users=# CREATE TABLE users (
+ID serial primary key,
+name varchar(255),
+email varchar(255),
+age int);
+```
+
+<br>
+
+作成したテーブルの確認
+
+```
+users=# \dt
+```
+```
+         List of relations
+ Schema | Name  | Type  |  Owner   
+--------+-------+-------+----------
+ public | users | table | postgres
+(1 row)
+```
+<br>
+
+レコードの登録
+
+```
+users=# INSERT INTO users (name, email, age)
+values ('hogehoge', 'hogehoge@gmail.com', 25),
+('testUser', 'test@gmail.com', 34);
+```
+```
+INSERT 0 2
+```
+
+<br>
+
+レコードの取得<br>
+
+```
+users=# SELECT * FROM users;
+```
+```
+ id |   name   |       email        | age 
+----+----------+--------------------+-----
+  1 | hogehoge | hogehoge@gmail.com |  25
+  2 | testUser | test@gmail.com     |  34
+(2 rows)
+```
+
+<br>
+
