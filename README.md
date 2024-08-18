@@ -17,7 +17,7 @@ Node.js v22.1.0<br>
 PostgreSQL<br>
 DBに使用<br>
 
-### 環境構築
+## 環境構築
 package.jsonファイルの生成<br>
 
 ```
