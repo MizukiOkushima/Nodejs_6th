@@ -145,6 +145,16 @@ users=# SELECT * FROM users;
 
 <br>
 
-PostmanにてGETとPOSTを試す<br>
+## PostmanにてGETとPOSTを試す
 
-<br>
+### GET
+
+![GET](https://github.com/user-attachments/assets/20b33e9d-7646-4b0f-8745-57170c1fdca4)
+
+### POST_SUCCESS
+
+![POST_SUCCESS](https://github.com/user-attachments/assets/be7c3218-b6ca-46cc-98c3-8e830f2d0287)
+
+### POST_ERROR
+
+![POST_ERROR](https://github.com/user-attachments/assets/7666917d-4fb4-46d7-a4ed-95d6fa0cd02a)
