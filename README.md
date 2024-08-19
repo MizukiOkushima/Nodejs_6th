@@ -145,3 +145,6 @@ users=# SELECT * FROM users;
 
 <br>
 
+PostmanにてGETとPOSTを試す<br>
+
+<br>
