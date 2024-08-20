@@ -158,3 +158,17 @@ users=# SELECT * FROM users;
 ### POST_ERROR
 
 ![POST_ERROR](https://github.com/user-attachments/assets/7666917d-4fb4-46d7-a4ed-95d6fa0cd02a)
+
+### DELETE
+
+![DELETE](https://github.com/user-attachments/assets/f0252a1e-1e44-48b3-8c58-932e7633c5ab)
+
+### PUT
+
+![PUT_BEFORE](https://github.com/user-attachments/assets/6c183054-c9c9-4f1c-a6e9-64865bf34437)
+
+![PUT_AFTER1](https://github.com/user-attachments/assets/7dd9efb6-1303-4282-a0ae-2d66d14372d6)
+
+![PUT_AFTER2](https://github.com/user-attachments/assets/7252c1dd-ba77-4414-9d44-67677d9adf88)
+
+![PUT_NOTHING](https://github.com/user-attachments/assets/8ff5ec27-3ef3-4007-bfcc-e7ffb5cc5fc9)
