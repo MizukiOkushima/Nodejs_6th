@@ -69,8 +69,83 @@ app.post("/users", (req, res) => {
 
         // ユーザーの登録処理
         pool.query("INSERT INTO users(name, email, age) values($1, $2, $3)", [name, email, age], (error, results) => {
-            if(error) throw error;
+            if (error) throw error;
             res.status(201).send("ユーザー登録に成功しました。")
+        });
+
+    });
+
+});
+
+// DELETE 特定のユーザーを削除するAPI
+// :文字列 任意の文字列を設定 動的にエンドポイントを設定可能
+app.delete("/users/:id", (req, res) => {
+
+    // URLからIDを取得 /user/:idの部分を取得
+    const id = req.params.id;
+
+    // query SQL文
+    // 代二引数 配列にて:idをを設定 PostgreSQLではプレースホルダとして配列二指定した値または変数を$1, $2...と使用可能となる
+    pool.query("SELECT * FROM users WHERE id = $1", [id], (error, results) => {
+
+        // エラー処理
+        if (error) throw error;
+
+        // idが存在するかどうかのチェック
+        const isUserExisted = results.rows.length;
+        if (!isUserExisted) {
+            return res.send("ユーザーが存在しません。");
+        }
+
+        // query SQL文
+        // 代二引数 配列にて:idをを設定 PostgreSQLではプレースホルダとして配列二指定した値または変数を$1, $2...と使用可能となる
+        pool.query("DELETE FROM users WHERE id = $1", [id], (error, results) => {
+
+            // エラー処理
+            if (error) throw error;
+
+            // ステータス200番の場合
+            return res.status(200).send("削除に成功しました。");
+
+        });
+
+    });
+
+});
+
+// PUT 特定のユーザーを更新するAPI 今回は名前を変える
+// :文字列 任意の文字列を設定 動的にエンドポイントを設定可能
+app.put("/users/:id", (req, res) => {
+
+    // URLからIDを取得 /user/:idの部分を取得
+    const id = req.params.id;
+
+    // 名前の取得
+    const name = req.body.name;
+
+    // query SQL文
+    // 代二引数 配列にて:idをを設定 PostgreSQLではプレースホルダとして配列二指定した値または変数を$1, $2...と使用可能となる
+    pool.query("SELECT * FROM users WHERE id = $1", [id], (error, results) => {
+
+        // エラー処理
+        if (error) throw error;
+
+        // idが存在するかどうかのチェック
+        const isUserExisted = results.rows.length;
+        if (!isUserExisted) {
+            return res.send("ユーザーが存在しません。");
+        }
+
+        // query SQL文
+        // 代二引数 配列にて:idをを設定 PostgreSQLではプレースホルダとして配列二指定した値または変数を$1, $2...と使用可能となる
+        pool.query("UPDATE users SET name = $1 WHERE id = $2", [name, id], (error, results) => {
+
+            // エラー処理
+            if (error) throw error;
+
+            // ステータス200番の場合
+            return res.status(200).send("更新に成功しました。");
+
         });
 
     });
